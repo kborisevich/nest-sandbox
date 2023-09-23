@@ -1,0 +1,19 @@
+{
+  "name": "nest-sandbox",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kborisevich/nest-sandbox.git"
+  },
+  "author": "Kiryl Barysevich",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kborisevich/nest-sandbox/issues"
+  },
+  "homepage": "https://github.com/kborisevich/nest-sandbox#readme"
+}
