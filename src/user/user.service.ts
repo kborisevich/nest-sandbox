@@ -3,6 +3,7 @@ import { DatabaseService } from '../database/database.service';
 import { User } from './user.model';
 import { User as UserInterface, UserCountByCountry, AvgEarningsByCountry } from './user.interface';
 import { DataSource, FindManyOptions, Repository } from 'typeorm';
+import { UserDTO } from './dto/user.dto';
 
 @Injectable()
 export class UserService {
@@ -14,7 +15,7 @@ export class UserService {
     this.repository = database.getRepository(User);
   }
 
-  async create(user: UserInterface): Promise<User> {
+  async create(user: UserDTO): Promise<User> {
     return this.repository.create(user).save();
   }
 

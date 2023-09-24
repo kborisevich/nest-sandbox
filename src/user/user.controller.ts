@@ -1,7 +1,8 @@
-import { Controller, Get, Param, Post, Body } from '@nestjs/common';
+import { Controller, Get, Param, Post, Body, UsePipes, ValidationPipe, ParseIntPipe } from '@nestjs/common';
+import { FindManyOptions } from 'typeorm';
+import { UserDTO } from './dto/user.dto';
 import { UserService } from './user.service';
 import { User, UserCountByCountry, AvgEarningsByCountry } from './user.interface';
-import { FindManyOptions } from 'typeorm';
 
 @Controller('users')
 export class UserController {
@@ -23,12 +24,13 @@ export class UserController {
   }
 
   @Get(':id')
-  findById(@Param('id') id: string) {
+  findById(@Param('id', ParseIntPipe) id: string) {
     return this.usersService.findById(+id);
   }
 
   @Post()
-  create(@Body() user: User): Promise<User> {
+  @UsePipes(new ValidationPipe())
+  create(@Body() user: UserDTO): Promise<User> {
     return this.usersService.create(user);
   }
 }
