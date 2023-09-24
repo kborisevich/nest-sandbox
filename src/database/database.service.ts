@@ -31,13 +31,6 @@ export class DatabaseService {
       name: 'version',
     });
 
-    // this.db.public.interceptQueries(queryText => {
-    //   if (queryText.search(/(pg_views|pg_matviews|pg_tables|pg_enum)/g) > -1) {
-    //   return [];
-    //   }
-    //   return null;
-    // });
-
     this.dataSource = await this.db.adapters.createTypeormDataSource({
       type: 'postgres',
       entities: [User]
@@ -53,7 +46,10 @@ export class DatabaseService {
       const uniqueUsers = uniqBy(usersData, 'id');
 
       for (const user of uniqueUsers) {
-        const u = users.create(user);
+        const u = users.create({
+          ...user,
+          earnings: parseFloat(user.earnings.match(/[\d.]+/)[0]),
+        });
         await users.save(u);
       }
 

@@ -9,8 +9,8 @@ export class User extends BaseEntity {
     @Column({ type: 'text' })
     name!: string;
 
-    @Column({ type: 'text' })
-    earnings!: string;
+    @Column({ type: 'decimal' })
+    earnings!: number;
 
     @Column({ type: 'text' })
     country!: string;
