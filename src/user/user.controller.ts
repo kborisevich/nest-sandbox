@@ -1,6 +1,6 @@
 import { Controller, Get, Param, Post, Body, UsePipes, ValidationPipe, ParseIntPipe } from '@nestjs/common';
 import { FindManyOptions } from 'typeorm';
-import { UserDTO } from './dto/user.dto';
+import { UserDTO } from './user.dto';
 import { UserService } from './user.service';
 import { User, UserCountByCountry, AvgEarningsByCountry } from './user.interface';
 
