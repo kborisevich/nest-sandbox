@@ -3,7 +3,7 @@ import { uniqBy } from 'lodash';
 import { readFileSync } from 'fs';
 import { newDb, IMemoryDb, IBackup } from 'pg-mem';
 import { Injectable } from '@nestjs/common';
-import { User } from '../users/user.model';
+import { User } from '../user/user.model';
 
 @Injectable()
 export class DatabaseService {

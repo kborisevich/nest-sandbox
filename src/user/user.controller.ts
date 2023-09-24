@@ -1,11 +1,11 @@
 import { Controller, Get, Param, Post, Body } from '@nestjs/common';
-import { UsersService } from './users.service';
+import { UserService } from './user.service';
 import { User, UserCountByCountry, AvgEarningsByCountry } from './user.interface';
 import { FindManyOptions } from 'typeorm';
 
 @Controller('users')
-export class UsersController {
-  constructor(private usersService: UsersService) {}
+export class UserController {
+  constructor(private usersService: UserService) {}
 
   @Get()
   findAll(options: FindManyOptions): Promise<User[]> {

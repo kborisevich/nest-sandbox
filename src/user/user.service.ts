@@ -5,7 +5,7 @@ import { User as UserInterface, UserCountByCountry, AvgEarningsByCountry } from 
 import { DataSource, FindManyOptions, Repository } from 'typeorm';
 
 @Injectable()
-export class UsersService {
+export class UserService {
   private repository: Repository<User>;
 
   constructor(private readonly databaseService: DatabaseService) {
