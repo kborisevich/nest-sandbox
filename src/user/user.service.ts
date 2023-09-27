@@ -42,6 +42,27 @@ export class UserService {
 
   // average earnings of the 10 users with highest earnings per country.
   async averageEarningsByCountry(): Promise<AvgEarningsByCountry[]> {
+    // ROW_NUMBER() not implemented in pg-mem, also aliases in subqueries not working
+    // return this.repository.query(`
+    //   SELECT
+    //     country,
+    //     AVG(earnings) AS averageEarnings
+    //   FROM (
+    //     SELECT
+    //       country,
+    //       earnings,
+    //       ROW_NUMBER() OVER (PARTITION BY country ORDER BY earnings DESC) AS rank
+    //     FROM
+    //       users
+    //   ) AS ranked_users
+    //   WHERE
+    //     rank <= 10
+    //   GROUP BY
+    //     country
+    //   ORDER BY
+    //     country;
+    // `);
+
     return this.repository
       .createQueryBuilder('user')
       .select(['user.country', 'AVG(user.earnings) as avgEarnings'])
